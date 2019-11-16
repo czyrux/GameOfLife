@@ -11,8 +11,15 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7"
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
 }
 
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
 compileKotlin {
     kotlinOptions.jvmTarget = "1.6"
 }
