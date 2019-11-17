@@ -2,14 +2,15 @@ package model
 
 class GameOfLifeBoard(private val boardRows: List<List<Cell>>) {
 
+    fun getCell(row : Int, column : Int) = boardRows[row][column]
     fun getRows() = boardRows.size
     fun getColumns() = boardRows[0].size
 
     class Builder() {
         private var rows: MutableList<List<Cell>> = ArrayList()
 
-        fun withRow(newRow: List<Cell>): Builder {
-            rows.add(newRow)
+        fun withRow(newRow: List<CellState>): Builder {
+            rows.add(newRow.map { cellState: CellState -> Cell(cellState) })
             return this
         }
         fun build(): GameOfLifeBoard {

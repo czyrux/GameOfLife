@@ -2,31 +2,42 @@ package model
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
 import java.lang.IllegalStateException
 
 internal class GameOfLifeBoardBuilderShould {
+
+    @Test
+    fun createBoardWithCellsInCorrectState() {
+        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(CellState.Dead, CellState.Alive)).build()
+        assertAll(
+            Executable { assertTrue(board.getCell(0, 0).isDead()) },
+            Executable { assertTrue(board.getCell(0, 1).isAlive()) }
+        )
+    }
+
     @Test
     fun createBoardWithSingleRow() {
-        var board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(Cell(CellState.Dead))).build()
+        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(CellState.Dead)).build()
         assertEquals(1, board.getRows())
     }
 
     @Test
     fun createBoardWithMultipleRows() {
-        var board: GameOfLifeBoard =
+        val board: GameOfLifeBoard =
             GameOfLifeBoard.Builder()
-                .withRow(listOf(Cell(CellState.Dead)))
-                .withRow(listOf(Cell(CellState.Alive)))
+                .withRow(listOf(CellState.Dead))
+                .withRow(listOf(CellState.Alive))
                 .build()
         assertEquals(2, board.getRows())
     }
 
     @Test
     fun allowBoardCreationWhenAllRowsContainSameAmountColumns() {
-        var board: GameOfLifeBoard =
+        val board: GameOfLifeBoard =
             GameOfLifeBoard.Builder()
-                .withRow(listOf(Cell(CellState.Dead)))
-                .withRow(listOf(Cell(CellState.Alive)))
+                .withRow(listOf(CellState.Dead))
+                .withRow(listOf(CellState.Alive))
                 .build()
         assertEquals(1, board.getColumns())
     }
@@ -42,8 +53,8 @@ internal class GameOfLifeBoardBuilderShould {
     fun throwWhenRowsHaveDifferentColumns() {
         assertThrows(IllegalStateException::class.java) {
             GameOfLifeBoard.Builder()
-                .withRow(listOf(Cell(CellState.Dead)))
-                .withRow(listOf(Cell(CellState.Alive), Cell(CellState.Dead)))
+                .withRow(listOf(CellState.Dead))
+                .withRow(listOf(CellState.Alive, CellState.Dead))
                 .build()
         }
     }
