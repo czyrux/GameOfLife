@@ -1,13 +1,14 @@
 import model.Cell
-import model.CellState
+import model.isAlive
+import model.isDead
 
 interface GameOfLifeRule {
     fun apply(cell: Cell, neighbours: List<Cell>): Boolean
-    fun newCellState(): CellState
+    fun newCellState(): Cell
 }
 
 class UnderpopulationRule : GameOfLifeRule {
-    override fun newCellState() = CellState.Dead
+    override fun newCellState() = Cell.Dead
     override fun apply(cell: Cell, neighbours: List<Cell>): Boolean {
         if (cell.isDead()) {
             return false

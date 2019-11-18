@@ -8,16 +8,16 @@ internal class CellMapperShould {
 
     @Test
     fun mapToAliveStateWhenDot() {
-        assertEquals(CellState.Alive, mapCellState('.'))
+        assertEquals(Cell.Alive, mapCell('.'))
     }
 
     @Test
     fun mapToDeadStateWhenAsterisk() {
-        assertEquals(CellState.Dead, mapCellState('*'))
+        assertEquals(Cell.Dead, mapCell('*'))
     }
 
     @Test
     fun throwExceptionInOtherValue() {
-        assertThrows(IllegalStateException::class.java) { mapCellState('+') }
+        assertThrows(IllegalStateException::class.java) { mapCell('+') }
     }
 }

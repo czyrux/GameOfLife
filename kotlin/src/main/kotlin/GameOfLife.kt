@@ -1,6 +1,3 @@
-import model.Cell
-import model.CellState
-import model.GameOfLifeBoard
 import model.createSampleBoard
 
 fun main(args: Array<String>) {

@@ -35,8 +35,8 @@ class GameOfLifeBoard(private val boardRows: List<List<Cell>>) {
     class Builder() {
         private var rows: MutableList<List<Cell>> = ArrayList()
 
-        fun withRow(newRow: List<CellState>): Builder {
-            rows.add(newRow.map { cellState: CellState -> Cell(cellState) })
+        fun withRow(newRow: List<Cell>): Builder {
+            rows.add(newRow)
             return this
         }
 

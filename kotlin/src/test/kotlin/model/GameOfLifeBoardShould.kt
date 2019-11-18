@@ -15,9 +15,9 @@ internal class GameOfLifeBoardShould {
         assertEquals(8, neighbours.size)
         assertEquals(
             listOf(
-                Cell(CellState.Dead), Cell(CellState.Alive), Cell(CellState.Dead),
-                Cell(CellState.Alive), Cell(CellState.Alive),
-                Cell(CellState.Dead), Cell(CellState.Alive), Cell(CellState.Dead)
+                Cell.Dead, Cell.Alive, Cell.Dead,
+                Cell.Alive, Cell.Alive,
+                Cell.Dead, Cell.Alive, Cell.Dead
             ),
             neighbours
         )
@@ -32,8 +32,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(5, neighbours.size)
         assertEquals(
             listOf(
-                Cell(CellState.Dead), Cell(CellState.Dead),
-                Cell(CellState.Alive), Cell(CellState.Dead), Cell(CellState.Alive)
+                Cell.Dead, Cell.Dead,
+                Cell.Alive, Cell.Dead, Cell.Alive
             ),
             neighbours
         )
@@ -48,8 +48,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(5, neighbours.size)
         assertEquals(
             listOf(
-                Cell(CellState.Alive), Cell(CellState.Dead), Cell(CellState.Alive),
-                Cell(CellState.Dead), Cell(CellState.Dead)
+                Cell.Alive, Cell.Dead, Cell.Alive,
+                Cell.Dead, Cell.Dead
             ),
             neighbours
         )
@@ -64,8 +64,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(3, neighbours.size)
         assertEquals(
             listOf(
-                Cell(CellState.Alive),
-                Cell(CellState.Alive), Cell(CellState.Dead)
+                Cell.Alive,
+                Cell.Alive, Cell.Dead
             ),
             neighbours
         )
@@ -74,23 +74,23 @@ internal class GameOfLifeBoardShould {
     private fun getSampleBoard() = GameOfLifeBoard.Builder()
         .withRow(
             listOf(
-                CellState.Dead,
-                CellState.Alive,
-                CellState.Dead
+                Cell.Dead,
+                Cell.Alive,
+                Cell.Dead
             )
         )
         .withRow(
             listOf(
-                CellState.Alive,
-                CellState.Dead,
-                CellState.Alive
+                Cell.Alive,
+                Cell.Dead,
+                Cell.Alive
             )
         )
         .withRow(
             listOf(
-                CellState.Dead,
-                CellState.Alive,
-                CellState.Dead
+                Cell.Dead,
+                Cell.Alive,
+                Cell.Dead
             )
         )
         .build()

@@ -13,50 +13,50 @@ fun createSampleBoard() =
     GameOfLifeBoard.Builder()
         .withRow(
             listOf(
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive
             )
         )
         .withRow(
             listOf(
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Dead,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Dead,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive
             )
         )
         .withRow(
             listOf(
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Dead,
-                CellState.Dead,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Dead,
+                Cell.Dead,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive
             )
         )
         .withRow(
             listOf(
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Alive,
-                CellState.Dead
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Alive,
+                Cell.Dead
             )
         )
         .build()
