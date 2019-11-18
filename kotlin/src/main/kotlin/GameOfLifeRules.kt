@@ -37,3 +37,13 @@ class StayAliveRule : GameOfLifeRule {
         return aliveNeighbours == 2 || aliveNeighbours == 3
     }
 }
+
+class RegenerateCellRule : GameOfLifeRule {
+    override fun newCellState() = Cell.Alive
+    override fun apply(cell: Cell, neighbours: List<Cell>): Boolean {
+        if (cell.isAlive()) {
+            return false
+        }
+        return neighbours.count(Cell::isAlive) == 3
+    }
+}
