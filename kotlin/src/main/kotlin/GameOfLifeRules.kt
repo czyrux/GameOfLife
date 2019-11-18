@@ -16,3 +16,13 @@ class UnderpopulationRule : GameOfLifeRule {
         return neighbours.count(Cell::isAlive) < 2
     }
 }
+
+class OvercrowdingRule : GameOfLifeRule {
+    override fun newCellState() = Cell.Dead
+    override fun apply(cell: Cell, neighbours: List<Cell>): Boolean {
+        if (cell.isDead()) {
+            return false
+        }
+        return neighbours.count(Cell::isAlive) > 3
+    }
+}
