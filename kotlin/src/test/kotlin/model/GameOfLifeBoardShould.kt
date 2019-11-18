@@ -71,6 +71,22 @@ internal class GameOfLifeBoardShould {
         )
     }
 
+    @Test
+    fun getAllNeighboursAroundCellWhenInTopCornerRight() {
+        val board = getSampleBoard()
+
+        val neighbours = board.getNeighbours(row = 0, column = board.getColumns() - 1)
+
+        assertEquals(3, neighbours.size)
+        assertEquals(
+            listOf(
+                Cell.Alive,
+                Cell.Dead, Cell.Alive
+            ),
+            neighbours
+        )
+    }
+
     private fun getSampleBoard() = GameOfLifeBoard.Builder()
         .withRow(
             listOf(

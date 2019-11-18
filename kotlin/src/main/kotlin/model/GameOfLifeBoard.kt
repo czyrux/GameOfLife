@@ -1,6 +1,6 @@
 package model
 
-class GameOfLifeBoard(private val boardRows: List<List<Cell>>) {
+data class GameOfLifeBoard(val boardRows: List<List<Cell>>) {
 
     fun getCell(row: Int, column: Int) = boardRows[row][column]
     fun getRows() = boardRows.size
@@ -26,13 +26,13 @@ class GameOfLifeBoard(private val boardRows: List<List<Cell>>) {
     }
 
     private fun getCellIfInBounds(row: Int, column: Int): Cell? {
-        return if (row >= 0 && row < boardRows.size && column >= 0 && column <= boardRows[0].size)
+        return if (row >= 0 && row < boardRows.size && column >= 0 && column < boardRows[0].size)
             boardRows[row][column]
         else
             null
     }
 
-    class Builder() {
+    class Builder {
         private var rows: MutableList<List<Cell>> = ArrayList()
 
         fun withRow(newRow: List<Cell>): Builder {
