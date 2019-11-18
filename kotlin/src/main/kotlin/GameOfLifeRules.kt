@@ -26,3 +26,14 @@ class OvercrowdingRule : GameOfLifeRule {
         return neighbours.count(Cell::isAlive) > 3
     }
 }
+
+class StayAliveRule : GameOfLifeRule {
+    override fun newCellState() = Cell.Alive
+    override fun apply(cell: Cell, neighbours: List<Cell>): Boolean {
+        if (cell.isDead()) {
+            return false
+        }
+        val aliveNeighbours = neighbours.count(Cell::isAlive)
+        return aliveNeighbours == 2 || aliveNeighbours == 3
+    }
+}
