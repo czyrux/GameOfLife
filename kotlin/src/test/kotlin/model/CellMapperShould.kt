@@ -7,13 +7,13 @@ import java.lang.IllegalStateException
 internal class CellMapperShould {
 
     @Test
-    fun mapToAliveStateWhenDot() {
-        assertEquals(Cell.Alive, mapCell('.'))
+    fun mapToDeadStateWhenDot() {
+        assertEquals(Cell.Dead, mapCell('.'))
     }
 
     @Test
-    fun mapToDeadStateWhenAsterisk() {
-        assertEquals(Cell.Dead, mapCell('*'))
+    fun mapToAliveStateWhenAsterisk() {
+        assertEquals(Cell.Alive, mapCell('*'))
     }
 
     @Test
