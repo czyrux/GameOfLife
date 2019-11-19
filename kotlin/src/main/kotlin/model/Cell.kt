@@ -8,8 +8,8 @@ sealed class Cell {
 }
 
 fun mapCell(value: Char) = when (value) {
-    '.' -> Cell.Alive
-    '*' -> Cell.Dead
+    '.' -> Cell.Dead
+    '*' -> Cell.Alive
     else -> throw IllegalStateException("Unrecognized value: $value")
 }
 
