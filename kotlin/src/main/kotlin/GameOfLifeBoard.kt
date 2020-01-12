@@ -1,12 +1,10 @@
-package model
-
-data class GameOfLifeBoard(val boardRows: List<List<Cell>>) {
+data class GameOfLifeBoard(val boardRows: List<List<GameOfLifeCell>>) {
 
     fun getCell(row: Int, column: Int) = boardRows[row][column]
     fun getRows() = boardRows.size
     fun getColumns() = boardRows[0].size
-    fun getNeighbours(row: Int, column: Int): List<Cell> {
-        val neighbours = ArrayList<Cell>()
+    fun getNeighbours(row: Int, column: Int): List<GameOfLifeCell> {
+        val neighbours = ArrayList<GameOfLifeCell>()
 
         // Upper row
         getCellIfInBounds(row = row - 1, column = column - 1)?.let { neighbours.add(it) }
@@ -25,7 +23,7 @@ data class GameOfLifeBoard(val boardRows: List<List<Cell>>) {
         return neighbours
     }
 
-    private fun getCellIfInBounds(row: Int, column: Int): Cell? {
+    private fun getCellIfInBounds(row: Int, column: Int): GameOfLifeCell? {
         return if (row >= 0 && row < boardRows.size && column >= 0 && column < boardRows[0].size)
             boardRows[row][column]
         else
@@ -33,9 +31,9 @@ data class GameOfLifeBoard(val boardRows: List<List<Cell>>) {
     }
 
     class Builder {
-        private var rows: MutableList<List<Cell>> = ArrayList()
+        private var rows: MutableList<List<GameOfLifeCell>> = ArrayList()
 
-        fun withRow(newRow: List<Cell>): Builder {
+        fun withRow(newRow: List<GameOfLifeCell>): Builder {
             rows.add(newRow)
             return this
         }

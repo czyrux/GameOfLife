@@ -1,5 +1,3 @@
-package model
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
@@ -9,7 +7,7 @@ internal class GameOfLifeBoardBuilderShould {
 
     @Test
     fun createBoardWithCellsInCorrectState() {
-        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(Cell.Dead, Cell.Alive)).build()
+        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(GameOfLifeCell.Dead, GameOfLifeCell.Alive)).build()
         assertAll(
             Executable { assertTrue(board.getCell(0, 0).isDead()) },
             Executable { assertTrue(board.getCell(0, 1).isAlive()) }
@@ -18,7 +16,7 @@ internal class GameOfLifeBoardBuilderShould {
 
     @Test
     fun createBoardWithSingleRow() {
-        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(Cell.Dead)).build()
+        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(GameOfLifeCell.Dead)).build()
         assertEquals(1, board.getRows())
     }
 
@@ -26,8 +24,8 @@ internal class GameOfLifeBoardBuilderShould {
     fun createBoardWithMultipleRows() {
         val board: GameOfLifeBoard =
             GameOfLifeBoard.Builder()
-                .withRow(listOf(Cell.Dead))
-                .withRow(listOf(Cell.Alive))
+                .withRow(listOf(GameOfLifeCell.Dead))
+                .withRow(listOf(GameOfLifeCell.Alive))
                 .build()
         assertEquals(2, board.getRows())
     }
@@ -36,8 +34,8 @@ internal class GameOfLifeBoardBuilderShould {
     fun allowBoardCreationWhenAllRowsContainSameAmountColumns() {
         val board: GameOfLifeBoard =
             GameOfLifeBoard.Builder()
-                .withRow(listOf(Cell.Dead))
-                .withRow(listOf(Cell.Alive))
+                .withRow(listOf(GameOfLifeCell.Dead))
+                .withRow(listOf(GameOfLifeCell.Alive))
                 .build()
         assertEquals(1, board.getColumns())
     }
@@ -53,8 +51,8 @@ internal class GameOfLifeBoardBuilderShould {
     fun throwWhenRowsHaveDifferentColumns() {
         assertThrows(IllegalStateException::class.java) {
             GameOfLifeBoard.Builder()
-                .withRow(listOf(Cell.Dead))
-                .withRow(listOf(Cell.Alive, Cell.Dead))
+                .withRow(listOf(GameOfLifeCell.Dead))
+                .withRow(listOf(GameOfLifeCell.Alive, GameOfLifeCell.Dead))
                 .build()
         }
     }

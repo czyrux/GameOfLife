@@ -1,10 +1,3 @@
-import model.Cell
-import model.GameOfLifeBoard
-
-fun main(args: Array<String>) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-}
-
 private val gameRules = listOf(
     UnderpopulationRule(),
     OvercrowdingRule(),
@@ -19,10 +12,10 @@ fun playGame(initialBoard: GameOfLifeBoard, generations: Int): GameOfLifeBoard {
     for (_x in 0 until generations) {
         val boardBuilder = GameOfLifeBoard.Builder()
         for (i in 0 until currentBoard.getRows()) {
-            val rowCells: MutableList<Cell> = ArrayList()
+            val rowCells: MutableList<GameOfLifeCell> = ArrayList()
             for (j in 0 until currentBoard.getColumns()) {
                 val cell = currentBoard.getCell(row = i, column = j)
-                val neighbours: List<Cell> = currentBoard.getNeighbours(row = i, column = j)
+                val neighbours: List<GameOfLifeCell> = currentBoard.getNeighbours(row = i, column = j)
                 val newCell = gameRules
                     .find { it.apply(cell, neighbours) }
                     ?.newCellState()

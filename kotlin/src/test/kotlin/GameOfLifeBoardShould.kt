@@ -1,5 +1,5 @@
-package model
-
+import GameOfLifeBoard
+import GameOfLifeCell
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -15,9 +15,9 @@ internal class GameOfLifeBoardShould {
         assertEquals(8, neighbours.size)
         assertEquals(
             listOf(
-                Cell.Dead, Cell.Alive, Cell.Dead,
-                Cell.Alive, Cell.Alive,
-                Cell.Dead, Cell.Alive, Cell.Dead
+                GameOfLifeCell.Dead, GameOfLifeCell.Alive, GameOfLifeCell.Dead,
+                GameOfLifeCell.Alive, GameOfLifeCell.Alive,
+                GameOfLifeCell.Dead, GameOfLifeCell.Alive, GameOfLifeCell.Dead
             ),
             neighbours
         )
@@ -32,8 +32,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(5, neighbours.size)
         assertEquals(
             listOf(
-                Cell.Dead, Cell.Dead,
-                Cell.Alive, Cell.Dead, Cell.Alive
+                GameOfLifeCell.Dead, GameOfLifeCell.Dead,
+                GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Alive
             ),
             neighbours
         )
@@ -48,8 +48,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(5, neighbours.size)
         assertEquals(
             listOf(
-                Cell.Alive, Cell.Dead, Cell.Alive,
-                Cell.Dead, Cell.Dead
+                GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Alive,
+                GameOfLifeCell.Dead, GameOfLifeCell.Dead
             ),
             neighbours
         )
@@ -64,8 +64,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(3, neighbours.size)
         assertEquals(
             listOf(
-                Cell.Alive,
-                Cell.Alive, Cell.Dead
+                GameOfLifeCell.Alive,
+                GameOfLifeCell.Alive, GameOfLifeCell.Dead
             ),
             neighbours
         )
@@ -80,8 +80,8 @@ internal class GameOfLifeBoardShould {
         assertEquals(3, neighbours.size)
         assertEquals(
             listOf(
-                Cell.Alive,
-                Cell.Dead, Cell.Alive
+                GameOfLifeCell.Alive,
+                GameOfLifeCell.Dead, GameOfLifeCell.Alive
             ),
             neighbours
         )
@@ -90,23 +90,23 @@ internal class GameOfLifeBoardShould {
     private fun getSampleBoard() = GameOfLifeBoard.Builder()
         .withRow(
             listOf(
-                Cell.Dead,
-                Cell.Alive,
-                Cell.Dead
+                GameOfLifeCell.Dead,
+                GameOfLifeCell.Alive,
+                GameOfLifeCell.Dead
             )
         )
         .withRow(
             listOf(
-                Cell.Alive,
-                Cell.Dead,
-                Cell.Alive
+                GameOfLifeCell.Alive,
+                GameOfLifeCell.Dead,
+                GameOfLifeCell.Alive
             )
         )
         .withRow(
             listOf(
-                Cell.Dead,
-                Cell.Alive,
-                Cell.Dead
+                GameOfLifeCell.Dead,
+                GameOfLifeCell.Alive,
+                GameOfLifeCell.Dead
             )
         )
         .build()

@@ -1,4 +1,3 @@
-import model.Cell
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -8,15 +7,15 @@ internal class RegenerateCellRuleShould {
 
     @Test
     fun notBeAppliedWithAliveCells() {
-        assertFalse(RegenerateCellRule().apply(Cell.Alive, listOf()))
+        assertFalse(RegenerateCellRule().apply(GameOfLifeCell.Alive, listOf()))
     }
 
     @Test
     fun applyWhen3AliveNeighbours() {
         assertTrue(
             RegenerateCellRule().apply(
-                Cell.Dead,
-                listOf(Cell.Alive, Cell.Alive, Cell.Alive, Cell.Dead, Cell.Dead)
+                GameOfLifeCell.Dead,
+                listOf(GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Dead)
             )
         )
     }
@@ -27,8 +26,8 @@ internal class RegenerateCellRuleShould {
             Executable {
                 assertFalse(
                     RegenerateCellRule().apply(
-                        Cell.Dead,
-                        listOf(Cell.Alive, Cell.Dead, Cell.Dead)
+                        GameOfLifeCell.Dead,
+                        listOf(GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Dead)
                     )
                 )
 
@@ -36,8 +35,8 @@ internal class RegenerateCellRuleShould {
             Executable {
                 assertFalse(
                     RegenerateCellRule().apply(
-                        Cell.Dead,
-                        listOf(Cell.Alive, Cell.Alive, Cell.Dead, Cell.Dead)
+                        GameOfLifeCell.Dead,
+                        listOf(GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Dead)
                     )
                 )
 

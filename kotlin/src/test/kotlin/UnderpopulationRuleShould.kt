@@ -1,4 +1,3 @@
-import model.Cell
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -7,15 +6,15 @@ internal class UnderpopulationRuleShould {
 
     @Test
     fun notBeAppliedWithDeadCells() {
-        assertFalse(UnderpopulationRule().apply(Cell.Dead, listOf()))
+        assertFalse(UnderpopulationRule().apply(GameOfLifeCell.Dead, listOf()))
     }
 
     @Test
     fun applyWhenLessThanTwoLiveNeighbours() {
         assertTrue(
             UnderpopulationRule().apply(
-                Cell.Alive,
-                listOf(Cell.Dead, Cell.Dead, Cell.Alive)
+                GameOfLifeCell.Alive,
+                listOf(GameOfLifeCell.Dead, GameOfLifeCell.Dead, GameOfLifeCell.Alive)
             )
         )
     }
@@ -24,8 +23,8 @@ internal class UnderpopulationRuleShould {
     fun notApplyWhenMoreThanTwoLiveNeighbours() {
         assertFalse(
             UnderpopulationRule().apply(
-                Cell.Alive,
-                listOf(Cell.Dead, Cell.Alive, Cell.Alive)
+                GameOfLifeCell.Alive,
+                listOf(GameOfLifeCell.Dead, GameOfLifeCell.Alive, GameOfLifeCell.Alive)
             )
         )
     }

@@ -1,12 +1,9 @@
-import model.Cell
-import model.createSampleBoardGen1
-import model.createSampleBoardGen2
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class GameOfLifePlayTest {
+internal class GameOfLifeShould {
     @Test
-    fun playGame() {
+    fun playOneRoundOfTheGame() {
         val board = createSampleBoardGen1()
 
         val finalBoard = playGame(initialBoard = board, generations = 1)

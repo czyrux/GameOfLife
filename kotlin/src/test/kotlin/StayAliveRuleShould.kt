@@ -1,4 +1,3 @@
-import model.Cell
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -8,35 +7,35 @@ internal class StayAliveRuleShould {
 
     @Test
     fun notBeAppliedWithDeadCells() {
-        assertFalse(StayAliveRule().apply(Cell.Dead, listOf()))
+        assertFalse(StayAliveRule().apply(GameOfLifeCell.Dead, listOf()))
     }
 
     @Test
     fun applyWhen2AliveNeighbours() {
-        assertTrue(StayAliveRule().apply(Cell.Alive, listOf(Cell.Alive, Cell.Alive, Cell.Dead, Cell.Dead)))
+        assertTrue(StayAliveRule().apply(GameOfLifeCell.Alive, listOf(GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Dead)))
     }
 
     @Test
     fun applyWhen3AliveNeighbours() {
-        assertTrue(StayAliveRule().apply(Cell.Alive, listOf(Cell.Alive, Cell.Alive, Cell.Alive, Cell.Dead, Cell.Dead)))
+        assertTrue(StayAliveRule().apply(GameOfLifeCell.Alive, listOf(GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Dead)))
     }
 
     @Test
     fun notApplyWhen1AliveNeighbours() {
-        assertFalse(StayAliveRule().apply(Cell.Alive, listOf(Cell.Alive, Cell.Dead, Cell.Dead)))
+        assertFalse(StayAliveRule().apply(GameOfLifeCell.Alive, listOf(GameOfLifeCell.Alive, GameOfLifeCell.Dead, GameOfLifeCell.Dead)))
     }
 
     @Test
     fun notApplyWhenMoreThan3AliveNeighbours() {
         assertAll(
             Executable {
-                assertFalse(StayAliveRule().apply(Cell.Alive, listOf(Cell.Alive, Cell.Alive, Cell.Alive, Cell.Alive)))
+                assertFalse(StayAliveRule().apply(GameOfLifeCell.Alive, listOf(GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive)))
             },
             Executable {
                 assertFalse(
                     StayAliveRule().apply(
-                        Cell.Alive,
-                        listOf(Cell.Alive, Cell.Alive, Cell.Alive, Cell.Alive, Cell.Alive)
+                        GameOfLifeCell.Alive,
+                        listOf(GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive, GameOfLifeCell.Alive)
                     )
                 )
             }
