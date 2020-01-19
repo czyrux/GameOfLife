@@ -1,0 +1,16 @@
+{
+  "name": "game_of_life",
+  "version": "1.0.0",
+  "description": "Code running Game Of Life Kata.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "czyrux",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "jest": "^24.9.0"
+  }
+}
