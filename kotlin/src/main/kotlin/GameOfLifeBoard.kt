@@ -23,12 +23,8 @@ data class GameOfLifeBoard(val boardRows: List<List<GameOfLifeCell>>) {
         return neighbours
     }
 
-    private fun getCellIfInBounds(row: Int, column: Int): GameOfLifeCell? {
-        return if (row >= 0 && row < boardRows.size && column >= 0 && column < boardRows[0].size)
-            boardRows[row][column]
-        else
-            null
-    }
+    private fun getCellIfInBounds(row: Int, column: Int): GameOfLifeCell? =
+        boardRows[row][column].takeIf { row >= 0 && row < boardRows.size && column >= 0 && column < boardRows[0].size }
 
     class Builder {
         private var rows: MutableList<List<GameOfLifeCell>> = ArrayList()
