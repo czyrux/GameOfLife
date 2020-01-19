@@ -1,3 +1,5 @@
+import `package`.createSampleBoardGen1
+import `package`.createSampleBoardGen2
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
