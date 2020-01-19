@@ -9,8 +9,7 @@ fun playGame(initialBoard: GameOfLifeBoard, generations: Int): GameOfLifeBoard {
 
     var currentBoard = initialBoard
     (0..generations).forEach { _ ->
-        val nextBoardBuilder = GameOfLifeBoard.Builder()
-        currentBoard.boardRows
+        val newRows = currentBoard.boardRows
             .mapIndexed { rowIndex, row ->
                 row.mapIndexed { columnIndex, cell ->
                     val neighbours = currentBoard.getNeighbours(rowIndex, columnIndex)
@@ -18,9 +17,11 @@ fun playGame(initialBoard: GameOfLifeBoard, generations: Int): GameOfLifeBoard {
                     matchingRule?.newCellState() ?: cell
                 }
             }
-            .forEach { newRow -> nextBoardBuilder.withRow(newRow) }
+            .toCollection(ArrayList())
 
-        currentBoard = nextBoardBuilder.build()
+        currentBoard = GameOfLifeBoard.Builder()
+                            .withRows(newRows)
+                            .build()
     }
 
     return currentBoard

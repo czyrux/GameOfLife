@@ -7,7 +7,8 @@ internal class GameOfLifeBoardBuilderShould {
 
     @Test
     fun createBoardWithCellsInCorrectState() {
-        val board: GameOfLifeBoard = GameOfLifeBoard.Builder().withRow(listOf(GameOfLifeCell.Dead, GameOfLifeCell.Alive)).build()
+        val board: GameOfLifeBoard =
+            GameOfLifeBoard.Builder().withRow(listOf(GameOfLifeCell.Dead, GameOfLifeCell.Alive)).build()
         assertAll(
             Executable { assertTrue(board.getCell(0, 0).isDead()) },
             Executable { assertTrue(board.getCell(0, 1).isAlive()) }
@@ -25,9 +26,9 @@ internal class GameOfLifeBoardBuilderShould {
         val board: GameOfLifeBoard =
             GameOfLifeBoard.Builder()
                 .withRow(listOf(GameOfLifeCell.Dead))
-                .withRow(listOf(GameOfLifeCell.Alive))
+                .withRows(listOf(listOf(GameOfLifeCell.Dead), listOf(GameOfLifeCell.Alive)))
                 .build()
-        assertEquals(2, board.getRows())
+        assertEquals(3, board.getRows())
     }
 
     @Test

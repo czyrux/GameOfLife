@@ -33,6 +33,11 @@ data class GameOfLifeBoard(val boardRows: List<List<GameOfLifeCell>>) {
     class Builder {
         private var rows: MutableList<List<GameOfLifeCell>> = ArrayList()
 
+        fun withRows(rows: List<List<GameOfLifeCell>>): Builder {
+            this.rows.addAll(rows)
+            return this
+        }
+
         fun withRow(newRow: List<GameOfLifeCell>): Builder {
             rows.add(newRow)
             return this
