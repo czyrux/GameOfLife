@@ -1,3 +1,8 @@
+package util
+
+import GameOfLifeBoard
+import GameOfLifeCell
+
 /*
 Generation 1:
 4 8
