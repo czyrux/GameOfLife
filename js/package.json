@@ -4,13 +4,14 @@
   "description": "Code running Game Of Life Kata.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "author": "czyrux",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
-    "@babel/node": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "jest": "^24.9.0"
   }
 }
