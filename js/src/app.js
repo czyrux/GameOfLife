@@ -1,1 +1,1 @@
-console.log('Hello Game Of Life!');
+console.log("Hello Game Of Life!");
