@@ -39,4 +39,17 @@ let overcrowdingRule = {
     }
 };
 
-export { underpopulationRule, overcrowdingRule };
+let stayAliveRule = {
+    isApplicable: function(cell, neighbourCells) {
+        if (cell.state === CELL_STATE_DEATH) {
+            return false;
+        }
+        let aliveNeighbours = countAliveNeighbours(neighbourCells);
+        return aliveNeighbours === 2 || aliveNeighbours === 3;
+    },
+    newCellState: function() {
+        return LIVE_CELL;
+    }
+};
+
+export { underpopulationRule, overcrowdingRule, stayAliveRule };
