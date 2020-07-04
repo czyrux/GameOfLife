@@ -1,4 +1,9 @@
-import { underpopulationRule, overcrowdingRule } from "../src/rules.js";
+import {
+    underpopulationRule,
+    overcrowdingRule,
+    stayAliveRule
+} from "../src/rules.js";
+
 import {
     LIVE_CELL,
     DEAD_CELL,
@@ -79,5 +84,41 @@ test("Uvercrowding NOT apply when Live cell & 3 or less live neighbours", () => 
             DEAD_CELL,
             DEAD_CELL
         ])
+    ).toBeFalsy();
+});
+
+////////////////////
+// Stay Alive Rule
+////////////////////
+
+test("StayAlive NOT apply on death cells", () => {
+    expect(stayAliveRule.isApplicable(DEAD_CELL, [])).toBeFalsy();
+});
+
+test("Stay Alive apply when Live cell & 2 live neighbours", () => {
+    expect(
+        stayAliveRule.isApplicable(LIVE_CELL, [
+            LIVE_CELL,
+            LIVE_CELL,
+            DEAD_CELL,
+            DEAD_CELL
+        ])
+    ).toBeTruthy();
+});
+
+test("Stay Alive apply when Live cell & 3 live neighbours", () => {
+    expect(
+        stayAliveRule.isApplicable(LIVE_CELL, [
+            LIVE_CELL,
+            LIVE_CELL,
+            LIVE_CELL,
+            DEAD_CELL
+        ])
+    ).toBeTruthy();
+});
+
+test("Stay Alive NOT apply when Live cell & 1 live neighbours", () => {
+    expect(
+        stayAliveRule.isApplicable(LIVE_CELL, [LIVE_CELL, DEAD_CELL])
     ).toBeFalsy();
 });
