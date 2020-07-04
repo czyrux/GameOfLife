@@ -1,0 +1,39 @@
+import { underpopulationRule } from "../src/rules.js";
+import {
+    LIVE_CELL,
+    DEAD_CELL,
+    CELL_STATE_ALIVE,
+    CELL_STATE_DEATH
+} from "../src/constants";
+
+test("Underpopulation apply when Live cell & fewer than two lives neighbours", () => {
+    expect(
+        underpopulationRule.isApplicable(LIVE_CELL, [
+            LIVE_CELL,
+            DEAD_CELL,
+            DEAD_CELL
+        ])
+    ).toBeTruthy();
+    expect(
+        underpopulationRule.isApplicable(LIVE_CELL, [DEAD_CELL, DEAD_CELL])
+    ).toBeTruthy();
+});
+
+test("Underpopulation NOT apply on dead cells", () => {
+    expect(underpopulationRule.isApplicable(DEAD_CELL, [])).toBeFalsy();
+});
+
+test("Underpopulation NOT apply when Live cell & more than two live neighbours", () => {
+    expect(
+        underpopulationRule.isApplicable(LIVE_CELL, [
+            LIVE_CELL,
+            LIVE_CELL,
+            LIVE_CELL,
+            DEAD_CELL
+        ])
+    ).toBeFalsy();
+});
+
+test("Cell state when underpopulation applicable is Death", () => {
+    expect(underpopulationRule.newCellState().state).toBe(CELL_STATE_DEATH);
+});
