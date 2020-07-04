@@ -27,4 +27,16 @@ let underpopulationRule = {
     }
 };
 
-export { underpopulationRule };
+let overcrowdingRule = {
+    isApplicable: function(cell, neighbourCells) {
+        if (cell.state === CELL_STATE_DEATH) {
+            return false;
+        }
+        return countAliveNeighbours(neighbourCells) > 3;
+    },
+    newCellState: function() {
+        return DEAD_CELL;
+    }
+};
+
+export { underpopulationRule, overcrowdingRule };
