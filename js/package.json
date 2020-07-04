@@ -1,0 +1,20 @@
+{
+  "name": "game_of_life",
+  "version": "1.0.0",
+  "description": "Code running Game Of Life Kata.",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "author": "czyrux",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "husky": "^4.2.3",
+    "jest": "^24.9.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1"
+  }
+}
