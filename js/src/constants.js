@@ -1,0 +1,8 @@
+let CELL_STATE_ALIVE = "live";
+let CELL_STATE_DEATH = "death";
+
+let DEAD_CELL = { state: CELL_STATE_DEATH };
+
+let LIVE_CELL = { state: CELL_STATE_ALIVE };
+
+export { LIVE_CELL, DEAD_CELL, CELL_STATE_ALIVE, CELL_STATE_DEATH };
